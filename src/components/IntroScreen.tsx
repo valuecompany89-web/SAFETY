@@ -2,15 +2,15 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 
-import flyerImage from '../assets/images/flyer.png';
+// Google Drive direct link for the flyer
+const flyerImage = 'https://lh3.googleusercontent.com/d/1bfBdIxmvm_MgaRWbjLGnr8J5KPmNwc4K';
 
 interface IntroScreenProps {
   onStart: () => void;
 }
 
 export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
-  const [imgError, setImgError] = React.useState(false);
-  const fallbackImage = 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=800';
+  const [imgLoaded, setImgLoaded] = React.useState(false);
 
   return (
     <motion.div
@@ -39,13 +39,18 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
         <div className="absolute top-0 left-0 w-full h-1 bg-industrial-green" />
         
         {/* Event Flyer Image */}
-        <div className="mb-2 relative group">
-          <div className="absolute inset-0 bg-industrial-green/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+        <div className="mb-2 relative group min-h-[150px] flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+          {!imgLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-industrial-green border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
           <img 
-            src={imgError ? fallbackImage : flyerImage} 
+            src={flyerImage} 
             alt="Event Flyer" 
-            onError={() => setImgError(true)}
-            className="w-full h-auto max-h-[280px] object-contain rounded-lg border border-gray-200 shadow-sm"
+            onLoad={() => setImgLoaded(true)}
+            referrerPolicy="no-referrer"
+            className={`w-full h-auto max-h-[280px] object-contain rounded-lg transition-opacity duration-500 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ fetchPriority: 'high' } as any}
           />
         </div>
