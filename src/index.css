@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
+
+@theme {
+  --font-anton: "Anton", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-industrial-green: #0F5132;
+  --color-safety-green: #CCFF00;
+  --color-steel-light: #E9ECEF;
+  --color-steel-dark: #343A40;
+  --color-charcoal: #212529;
+  --color-off-white: #F8F9FA;
+}
+
+@layer base {
+  body {
+    @apply font-inter text-charcoal antialiased;
+    background: var(--color-off-white);
+  }
+}
+
+@layer components {
+  .panel-industrial {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 81, 50, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    @apply rounded-lg p-8 w-full max-w-md mx-auto;
+  }
+
+  .input-industrial {
+    @apply w-full bg-white border border-gray-300 rounded-md px-4 py-3 text-charcoal placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-industrial-green/20 focus:border-industrial-green transition-all;
+  }
+
+  .btn-industrial {
+    @apply w-full bg-industrial-green text-white hover:bg-[#0a3d24] active:scale-[0.98] transition-all rounded-md px-8 py-3 font-semibold text-lg flex items-center justify-center gap-2;
+  }
+
+  .btn-outline-industrial {
+    @apply w-full bg-transparent border-2 border-industrial-green text-industrial-green hover:bg-industrial-green/5 active:scale-[0.98] transition-all rounded-md px-8 py-3 font-semibold text-lg flex items-center justify-center gap-2;
+  }
+  
+  .card-option {
+    @apply w-full bg-white border-2 border-gray-100 rounded-lg p-4 text-left hover:border-industrial-green/50 hover:bg-industrial-green/[0.02] transition-all cursor-pointer;
+  }
+  
+  .card-option-selected {
+    @apply border-industrial-green bg-industrial-green/[0.05];
+  }
+}
+
+.grid-background {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+}
+
+.blueprint-line {
+  position: absolute;
+  background: rgba(15, 81, 50, 0.05);
+}
