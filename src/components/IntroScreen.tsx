@@ -2,14 +2,16 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 
-// No import needed for public folder assets
-const flyerImage = '/flyer.png';
+import flyerImage from '../assets/images/flyer.png';
 
 interface IntroScreenProps {
   onStart: () => void;
 }
 
 export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
+  const [imgError, setImgError] = React.useState(false);
+  const fallbackImage = 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=800';
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -40,8 +42,9 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
         <div className="mb-2 relative group">
           <div className="absolute inset-0 bg-industrial-green/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
           <img 
-            src={flyerImage} 
+            src={imgError ? fallbackImage : flyerImage} 
             alt="Event Flyer" 
+            onError={() => setImgError(true)}
             className="w-full h-auto max-h-[280px] object-contain rounded-lg border border-gray-200 shadow-sm"
             style={{ fetchPriority: 'high' } as any}
           />
