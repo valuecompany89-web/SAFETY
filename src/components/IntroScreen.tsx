@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 
-import flyerImage from '../assets/images/regenerated_image_1777746479868.png';
+// No import needed for public folder assets
+const flyerImage = '/flyer.png';
 
 interface IntroScreenProps {
   onStart: () => void;
