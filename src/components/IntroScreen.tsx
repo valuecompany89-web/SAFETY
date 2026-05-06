@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { ShieldCheck, ArrowRight } from 'lucide-react';
 
 // Google Drive direct link for the flyer
-const flyerImage = 'https://lh3.googleusercontent.com/d/1bfBdIxmvm_MgaRWbjLGnr8J5KPmNwc4K';
+const flyerImage = 'https://lh3.googleusercontent.com/d/1WgjYBzSlFvNGv-WEWRBuythBguWYqt1B';
 
 interface IntroScreenProps {
   onStart: () => void;
